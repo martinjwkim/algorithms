@@ -1,0 +1,4 @@
+n^2 > nlogn > n > logn > constant
+adding/removing element to beginning of array is O(N) time complexity
+sorting is O(NlogN)
+map/filter/reduce/forEach is O(N)

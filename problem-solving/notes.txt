@@ -1,0 +1,11 @@
+1. understand the problem
+  - restatte the problem in your own words
+  - consider the inputs going in to the problem
+  - consider the outputs / what should the solution look like
+  - how should i label the important pieces of data
+2. explore examples
+  - examples make you think of different cases
+  - start with simple examples
+  - progress to more complex examples
+  - explore examples with empty inputs and invalid inputs
+  
