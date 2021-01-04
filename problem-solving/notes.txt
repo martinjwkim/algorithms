@@ -1,5 +1,5 @@
 1. understand the problem
-  - restatte the problem in your own words
+  - restate the problem in your own words
   - consider the inputs going in to the problem
   - consider the outputs / what should the solution look like
   - how should i label the important pieces of data
@@ -8,4 +8,13 @@
   - start with simple examples
   - progress to more complex examples
   - explore examples with empty inputs and invalid inputs
-  
+3. break it down
+  - write out the steps you need to take
+  - pseudocode
+4. solve and simplify
+  - find the difficult part of the problem and ignore it
+  - write a simplified version
+  - incorporate the difficulty back in
+5. look back and refactor
+  - think of another way to solve the problem with better time/space complexity
+  - can ask interviewer how other people have solved the problem
