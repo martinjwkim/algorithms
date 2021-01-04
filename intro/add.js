@@ -12,3 +12,6 @@ function addUpTo2(n) {
 
 console.log(addUpTo(6))
 console.log(addUpTo2(6))
+
+// which is better? speed/memory or readability?
+// can check speed using performance.now() which returns in milliseconds
