@@ -1,0 +1,3 @@
+two essential components of a recursive function
+  1. base case - condition when the recursion ends
+  2. different input
