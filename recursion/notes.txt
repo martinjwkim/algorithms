@@ -1,3 +1,13 @@
 two essential components of a recursive function
   1. base case - condition when the recursion ends
   2. different input
+
+common recursion pitfalls
+  1. incorrect base case
+  2. forgetting to return things
+  3. stack overflow
+
+pure recursion
+  stand alone function that doesnt depend on external data structures
+  when making copies of arrays, use slice, spread operator, or concat to avoid mutation
+  
