@@ -1,0 +1,11 @@
+elementary sorting algorithms
+  javascripts built in sort - sorts by unicode unless given a comparative function
+  bubble sort
+    not commonly used, inefficient
+    largest values bubbles to the top/end
+    O(n^2)
+  selection sort
+    similar to bubble sort, swaps smallest value to start
+  insertion sort
+
+advanced sorting algorithms
