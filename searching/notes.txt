@@ -1,0 +1,9 @@
+linear searching
+  indexOf, includes, find, findIndex
+  O(n) time complexity
+
+binary searching
+  only works on sorted arrays
+  O(logn) time complexity
+
+
