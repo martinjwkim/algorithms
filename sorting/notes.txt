@@ -6,6 +6,9 @@ elementary sorting algorithms
     O(n^2)
   selection sort
     similar to bubble sort, swaps smallest value to start
+    O(n^2)
   insertion sort
+    inserts next value into correct spot
+    
 
 advanced sorting algorithms
