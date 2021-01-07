@@ -29,3 +29,6 @@ intermediate sorting algorithms
     time complexity best case is nlogn, worst n^2
     space complexity of O(logn) because its mutating the given array with new variables log n times
   radix sort
+    doesnt make comparisons and works on numbers
+    looks at the digits in order and groups them repeatedly
+    time complexity is O(nk) where k is the length of the longest digit
