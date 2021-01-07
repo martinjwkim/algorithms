@@ -23,5 +23,8 @@ intermediate sorting algorithms
     time complexity of merge sort: O(nlogn)
       log n for decomposition of arrays
       in each decomposition, there are n comparisons
+    space complexity of O(n)
   quick sort
+    like merge sort, exploits that single element arrays are always sorted
+    
   radix sort
