@@ -4,11 +4,24 @@ elementary sorting algorithms
     not commonly used, inefficient
     largest values bubbles to the top/end
     O(n^2)
+    only good when data is almost all sorted
   selection sort
     similar to bubble sort, swaps smallest value to start
     O(n^2)
+    only good when you want to bubble sort but with less swaps
   insertion sort
     inserts next value into correct spot
-    
+    O(n^2)
+    good in scenarios where data is sorted and each value comes in one at a time
+  all three have a space complexity of O(1)
 
-advanced sorting algorithms
+intermediate sorting algorithms
+  merge sort
+    combination of merging and sorting
+    exploits the fact that single element arrays are sorted
+    time complexity of merging two arrays: O(n+m) with n and m being the size of the two arrays
+    time complexity of merge sort: O(nlogn)
+      log n for decomposition of arrays
+      in each decomposition, there are n comparisons
+  quick sort
+  radix sort
