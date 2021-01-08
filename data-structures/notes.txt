@@ -1,0 +1,4 @@
+data structures
+  collection of values and relationships between them
+  have functions and operations that can be applied to the data in it
+
