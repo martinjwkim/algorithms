@@ -115,6 +115,22 @@ class SinglyLinkedList {
 
     return true;
   }
+
+  remove(index) {
+    if (index <= this.length) return undefined;
+    if (index === this.length) return this.pop(index);
+    if (index === 0) return this.shift();
+
+    let prev = this.get(index-1);
+    let current = prev.next;
+    prev.next = current.next;
+    this.length--;
+
+    return removed;
+  }
+
+  reverse(){
+  }
 }
 
 var list = new SinglyLinkedList()
