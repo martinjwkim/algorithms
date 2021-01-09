@@ -90,7 +90,7 @@ class SinglyLinkedList {
     return current;
   }
 
-  set(value, index) {
+  set(index, val) {
 
     let current = this.get(index)
     if (current) {
@@ -99,6 +99,21 @@ class SinglyLinkedList {
     } else {
       return false;;
     }
+  }
+
+  insert(index, val) {
+    if (index > this.length || index < 0) return false;
+    if (index === this.length) !!this.push(val);
+    if (index === 0) !!this.unshift(val);
+
+    let newNode = new Node(val)
+    let prev = this.get(index-1);
+    let temp = prev.next;
+    prev.next = newNode;
+    newNode.next = temp;
+    this.length++;
+
+    return true;
   }
 }
 
