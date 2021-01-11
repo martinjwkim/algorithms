@@ -3,9 +3,22 @@ data structures
   have functions and operations that can be applied to the data in it
 
 Singly Linked List
-  distinction between linked list and array - linked list doesnt have any indeces
-    cons - cant access random index
-    pros - insertion and deletion is inexpensive since values dont have to be reindexed
-  has nodes, which has both a value and pointer to the next node
-  contains a head, tail, and length
-  connected in a single direction to the next node
+  DESCRIPTION
+    distinction between linked list and array - linked list doesnt have any indeces
+      cons - cant access random index
+      pros - insertion and deletion is inexpensive since values dont have to be reindexed
+    has nodes, which has both a value and pointer to the next node
+    contains a head, tail, and length
+    connected in a single direction to the next node
+  BIG O COMPLEXITY
+    insertion O(1) doesnt matter where the insertion is
+    removal O(N) depends on where the removal is
+    searching O(N)
+    access O(N) where arrays are O(1)
+  RECAP
+    better than arrays when insertion and deletion are required at the beginning
+    worse than arrays when random access is required
+
+Doubly Linked List
+  
+
