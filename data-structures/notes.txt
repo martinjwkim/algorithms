@@ -1,38 +1,48 @@
-data structures
+DATA STRUCTURES
   collection of values and relationships between them
   have functions and operations that can be applied to the data in it
 
-Singly Linked List
-  DESCRIPTION
+SINGLY LINKED LIST
+  Description
     distinction between linked list and array - linked list doesnt have any indeces
       cons - cant access random index
       pros - insertion and deletion is inexpensive since values dont have to be reindexed
     has nodes, which has both a value and pointer to the next node
     contains a head, tail, and length
     connected in a single direction to the next node
-  BIG O COMPLEXITY
+  Big O Complexity
     insertion O(1) doesnt matter where the insertion is
     removal O(N) depends on where the removal is
     searching O(N)
     access O(N) where arrays are O(1)
-  RECAP
+  Recap
     better than arrays when insertion and deletion are required at the beginning
     worse than arrays when random access is required
 
-Doubly Linked List
-  DESCRIPTION
+DOUBLY LINKED LIST
+  Description
     distinction between dll and sll
       every node has a previous node pointer
       more flexibility but uses more memory
-  BIG O COMPLEXITY
+  Big O Complexity
     insertion O(1)
     removal O(N)
     searching O(N) but technically O(N/2) compared to sll
-    access O(N)
-  RECAP
+    access O(N) but technically O(N/2) compared to sll
+  Recap
     additional pointer compared to sll can go from front or back
     lots of operations can be twice as fast as sll
     but they take more memory because of the extra pointer
 
-
-
+STACKS
+  Description
+    abstract data structure that abides by the LIFO (last in first out) structure
+    example of call stacks: function call stacks, undo/redo feature, routing
+  Big O Complexity
+    insertion O(1)
+    removal O(1)
+    searching, access O(N) but these features are unimportant
+  Recap
+    LIFO abstract data structure
+    not a built in data structure in javascript
+  
