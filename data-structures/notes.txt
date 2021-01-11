@@ -34,10 +34,10 @@ DOUBLY LINKED LIST
     lots of operations can be twice as fast as sll
     but they take more memory because of the extra pointer
 
-STACKS
+STACK
   Description
     abstract data structure that abides by the LIFO (last in first out) structure
-    example of call stacks: function call stacks, undo/redo feature, routing
+    examples of stacks: function call stacks, undo/redo feature, routing
   Big O Complexity
     insertion O(1)
     removal O(1)
@@ -45,4 +45,16 @@ STACKS
   Recap
     LIFO abstract data structure
     not a built in data structure in javascript
+
+QUEUE
+  Description
+    abstract data structure that abides by the FIFO (first in first out) structure
+    example of queues: background tasks, print processing, uploading resources
+  Big O Complexity
+    insertion O(1)
+    removal O(1)
+    searching, access O(N) but these features are unimportant
+  Recap
+    FIFO abstract data structure
+    differs from stack just in which end gets removed first
   
