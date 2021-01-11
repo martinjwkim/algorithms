@@ -20,5 +20,8 @@ Singly Linked List
     worse than arrays when random access is required
 
 Doubly Linked List
-  
+  DESCRIPTION
+    distinction between dll and sll
+      every node has a previous node pointer
+      more flexibility but uses more memory
 
