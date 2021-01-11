@@ -24,4 +24,15 @@ Doubly Linked List
     distinction between dll and sll
       every node has a previous node pointer
       more flexibility but uses more memory
+  BIG O COMPLEXITY
+    insertion O(1)
+    removal O(N)
+    searching O(N) but technically O(N/2) compared to sll
+    access O(N)
+  RECAP
+    additional pointer compared to sll can go from front or back
+    lots of operations can be twice as fast as sll
+    but they take more memory because of the extra pointer
+
+
 
