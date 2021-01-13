@@ -2,7 +2,7 @@ DATA STRUCTURES
   collection of values and relationships between them
   have functions and operations that can be applied to the data in it
 
-SINGLY LINKED LIST
+SINGLY LINKED LISTS
   Description
     distinction between linked list and array - linked list doesnt have any indeces
       cons - cant access random index
@@ -19,7 +19,7 @@ SINGLY LINKED LIST
     better than arrays when insertion and deletion are required at the beginning
     worse than arrays when random access is required
 
-DOUBLY LINKED LIST
+DOUBLY LINKED LISTS
   Description
     distinction between dll and sll
       every node has a previous node pointer
@@ -34,7 +34,7 @@ DOUBLY LINKED LIST
     lots of operations can be twice as fast as sll
     but they take more memory because of the extra pointer
 
-STACK
+STACKS
   Description
     abstract data structure that abides by the LIFO (last in first out) structure
     examples of stacks: function call stacks, undo/redo feature, routing
@@ -46,7 +46,7 @@ STACK
     LIFO abstract data structure
     not a built in data structure in javascript
 
-QUEUE
+QUEUES
   Description
     abstract data structure that abides by the FIFO (first in first out) structure
     example of queues: background tasks, print processing, uploading resources
@@ -57,4 +57,16 @@ QUEUE
   Recap
     FIFO abstract data structure
     differs from stack just in which end gets removed first
+
+  TREES
+    Description
+      Data structure that consists of nodes in a parent-child relationship
+      Non-linear, multiple paths unlike lists
+      examples of trees: HTML DOM, network routing, abstract syntax trees, AI, folders in OS
+    Binary trees
+      Each parent can have a max of 2 children
+    Binary search trees (BSTs)
+      Special case of binary tree where every node to the left of a parent is less than the parent
+      and every node to the right of a parent is greater than the parent
+    
   
