@@ -68,5 +68,7 @@ QUEUES
     Binary search trees (BSTs)
       Special case of binary tree where every node to the left of a parent is less than the parent
       and every node to the right of a parent is greater than the parent
-    
+    Big O Complexity
+      insertion O(logn) if even sided tree
+      searching (Ologn) if even sided tree
   
