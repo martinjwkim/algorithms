@@ -95,4 +95,7 @@ HEAPS
     Left child is at 2n+1
     Right child is at 2n+2
     Parent is at (n-1)/2 floored
+  Priority Queues
+    data strucutre where elements with higher priority are served before ones with lower priority
+    
   
