@@ -40,7 +40,7 @@ class BinarySearchTree {
 
   find(value) {
     if (this.root === null) return false;
-    let current = this.root
+    let current = this.root;
     let found = false;
 
     while (current && !found) {
@@ -73,6 +73,24 @@ class BinarySearchTree {
     }
 
     return false;
+  }
+
+  BFS() {
+    let data = [];
+    let queue = [];
+    let current = this.root;
+
+    queue.push(current);
+
+    while (queue.length !== 0) {
+      current = queue.shift();
+      data.push(current.value);
+
+      if (current.left) queue.push(current.left);
+      if (current.right) queue.push(current.right);
+    }
+
+    return data;
   }
 }
 

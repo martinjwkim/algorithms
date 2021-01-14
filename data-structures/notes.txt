@@ -70,5 +70,12 @@ QUEUES
       and every node to the right of a parent is greater than the parent
     Big O Complexity
       insertion O(logn) if even sided tree
-      searching (Ologn) if even sided tree
+      searching O(logn) if even sided tree
+    Tree Traversal
+      Breadth-first Search (BFS)
+        Working down each level horizontally from top
+      Depth-first Search (DFS)
+        In-order
+        Pre-order
+        Post-order
   
