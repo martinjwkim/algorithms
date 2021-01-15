@@ -120,3 +120,7 @@ HASH TABLE
     Linear Probing
       At colliision, search array to find the next empty slot
       Each index is a unique key-index
+    Big O Complexity
+      Insertion O(1)
+      Deletion O(1)
+      Access O(1)
