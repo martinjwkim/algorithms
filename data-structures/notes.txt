@@ -104,4 +104,19 @@ HEAPS
   Recap
     Binary heaps are useful for sorting and implementing priority queues
     Easy to represent a heap in an array
-  
+
+HASH TABLE
+  Description
+    Hash tables are used to store key-value pairs
+    Keys are not ordered and don't have to be numeric
+  What makes a good hash?
+    Needs to be fast
+    Distrubted evenly at different indices
+    Deterministic - same input yields same output
+  Handling Collisions
+    Separate Chaining
+      At each index, values are stored in a more sophisticated data structure
+      Allows multiple key-value pairs to be stored at the same position
+    Linear Probing
+      At colliision, search array to find the next empty slot
+      Each index is a unique key-index
