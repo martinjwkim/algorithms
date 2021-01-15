@@ -24,7 +24,7 @@ class PriorityQueue {
     while (index > 0) {
       let parentIndex = Math.floor((index - 1) / 2);
       let parent = this.values[parentIndex];
-      if (element.priority <= parent.priority) break;
+      if (element.priority >= parent.priority) break;
       this.values[parentIndex] = element;
       this.values[index] = parent;
       index = parentIndex;
@@ -53,10 +53,10 @@ class PriorityQueue {
       let rightChild = leftIndex + 1 < length ? this.values[rightIndex] : null;
       let swap = null;
 
-      if (leftChild.priority > element.priority) {
+      if (leftChild.priority < element.priority) {
         swap = leftIndex;
       }
-      if (rightChild !== null && rightChild.priority > element.priority && rightChil.priority > leftChild.priority) {
+      if (rightChild !== null && rightChild.priority < element.priority && rightChild.priority < leftChild.priority) {
         swap = rightIndex;
       }
       if (!swap) break;
@@ -67,3 +67,15 @@ class PriorityQueue {
     }
   }
 }
+
+let ER = new PriorityQueue();
+ER.enqueue("common cold", 5)
+ER.enqueue("gunshot wound", 1)
+ER.enqueue("high fever", 3)
+ER.enqueue("broken arm", 2)
+ER.enqueue("glass in foot", 4)
+console.log(ER.dequeue());
+console.log(ER.dequeue());
+console.log(ER.dequeue());
+console.log(ER.dequeue());
+console.log(ER.dequeue());

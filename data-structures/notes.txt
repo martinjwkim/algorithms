@@ -97,5 +97,11 @@ HEAPS
     Parent is at (n-1)/2 floored
   Priority Queues
     data strucutre where elements with higher priority are served before ones with lower priority
-    
+  Big O Complexity
+    Insertion O(logn)
+    Removal O(logn)
+    Search O(N)
+  Recap
+    Binary heaps are useful for sorting and implementing priority queues
+    Easy to represent a heap in an array
   
