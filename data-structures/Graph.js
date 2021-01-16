@@ -52,19 +52,38 @@ class Graph {
   DFSIterative(start){
     let stack = [start];
     let result = [];
-    let visited = {};
-    let currentVertex;
+    let visited = {[start]:true};
+    let current;
 
-    visited[start] = true;
     while(stack.length){
-      currentVertex = stack.pop();
-      result.push(currentVertex);
-      this.adjacencyList[currentVertex].forEach(neighbor => {
+      current = stack.pop();
+      result.push(current);g
+      this.adjacencyList[current].forEach(neighbor => {
         if(!visited[neighbor]){
           visited[neighbor]=true;
           stack.push(neighbor);
         }
       })
+    }
+    return result;
+  }
+
+  BFS(start){
+    let result = [];
+    let visited = {[start]:true};
+    let queue = [start];
+    let current;
+
+    while(queue.length){
+      current = queue.shift();
+      result.push(current);
+
+      this.adjacencyList[current].forEach(neighbor => {
+        if(!visited[neighbor]){
+          visited[neighbor] = true;
+          queue.push(neighbor);
+        }
+      });
     }
     return result;
   }
@@ -84,4 +103,4 @@ g.addEdge("C","E")
 g.addEdge("D","E")
 g.addEdge("D","F")
 g.addEdge("E","F")
-console.log(g.DFSIterative("A"));
+console.log(g.BFS("A"));
