@@ -124,3 +124,28 @@ HASH TABLE
       Insertion O(1)
       Deletion O(1)
       Access O(1)
+
+GRAPHS
+  Description
+    Collection of nodes and connections
+    No parents node/ entry point
+    Used for social networks, location/mapping, routing algorithms, recommendations
+  Terminology
+    Vertex and edge
+    Difference between a tree and graph, there is only one path from one path to another
+    Undirected graphs and directed graphs, edges have direction
+    Weighted graphs and unweight graphs, edges have values associated with it
+  Storing Graphs
+    Adjacency Matrix
+      Connections are represented in a matrix, usually with 0s and 1s
+      Big O Complexity
+        Takes up more space and slower to iterate over all edges but faster to look up specific edge
+    Adjacency List
+      Either array or hash table where each key has values that it connects to
+      Big O Complexity
+        Takes up less space and faster to iterate over all edges but slow to look up specific edges
+
+      
+
+
+
