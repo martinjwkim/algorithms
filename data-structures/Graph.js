@@ -28,4 +28,41 @@ class Graph {
     delete this.adjacencyList[vertex];
     return this;
   }
+
+  DFSRecursive(start){
+    let result = [];
+    let visited = {};
+    let adjacencyList = this.adjacencyList;
+
+    function traverse(vertex){
+      if (!vertex) return null;
+      visited[vertex] = true;
+      result.push(vertex);
+      adjacencyList[vertex].forEach(neighbor => {
+        if(!visited[neighbor]){
+          return traverse(neighbor)
+        }
+      });
+    }
+
+    traverse(start);
+
+    return result;
+  }
 }
+
+let g = new Graph;
+g.addVertex("A")
+g.addVertex("B")
+g.addVertex("C")
+g.addVertex("D")
+g.addVertex("E")
+g.addVertex("F")
+g.addEdge("A","B")
+g.addEdge("A","C")
+g.addEdge("B","D")
+g.addEdge("C","E")
+g.addEdge("D","E")
+g.addEdge("D","F")
+g.addEdge("E","F")
+console.log(g.DFSRecursive("A"));

@@ -144,7 +144,9 @@ GRAPHS
       Either array or hash table where each key has values that it connects to
       Big O Complexity
         Takes up less space and faster to iterate over all edges but slow to look up specific edges
-
+  Graph Traversal
+      Depth First Search (DFS)
+      Breadth First Search (BFS)
       
 
 
