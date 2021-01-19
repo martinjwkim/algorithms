@@ -4,25 +4,25 @@ class WeightedGraph {
   }
 
   addVertex(vertex) {
-    if(!this.adjacencyList[vertex]) this.adjacencyList[vertex] = [];
+    if (!this.adjacencyList[vertex]) this.adjacencyList[vertex] = [];
   }
 
-  addEdge(vertex1,vertex2,weight){
-    this.adjacencyList[vertex1].push({node:vertex2, weight});
-    this.adjacencyList[vertex2].push({node:vertex1, weight});
+  addEdge(vertex1, vertex2, weight) {
+    this.adjacencyList[vertex1].push({ node: vertex2, weight });
+    this.adjacencyList[vertex2].push({ node: vertex1, weight });
   }
 
-  Dijkstra(start, finish){
+  Dijkstra(start, finish) {
     let nodes = new PriorityQueue();
     let distances = {};
     let previous = {};
     let path = [];
     let current;
 
-    for (let node in this.adjacencyList){
+    for (let node in this.adjacencyList) {
       if (start === node) {
         distances[node] = 0;
-        nodes.enqueue(start,0);
+        nodes.enqueue(start, 0);
       } else {
         distances[node] = Infinity;
         nodes.enqueue(node, Infinity);
@@ -30,22 +30,22 @@ class WeightedGraph {
       previous[node] = null;
     }
 
-    while (nodes.values.length!==0){
+    while (nodes.values.length !== 0) {
       current = nodes.dequeue().value;
 
-      if(current === finish){
-        while(previous[current]){
+      if (current === finish) {
+        while (previous[current]) {
           path.push(current);
           current = previous[current];
         }
         break;
       } else {
-        for (let neighbor of this.adjacencyList[current]){
-          let currentDistance = distances[current]+neighbor.weight;
+        for (let neighbor of this.adjacencyList[current]) {
+          let currentDistance = distances[current] + neighbor.weight;
           if (currentDistance < distances[neighbor.node]) {
             distances[neighbor.node] = currentDistance;
             previous[neighbor.node] = current;
-            nodes.enqueue(neighbor.node,currentDistance);
+            nodes.enqueue(neighbor.node, currentDistance);
           }
         }
       }
@@ -56,7 +56,7 @@ class WeightedGraph {
 }
 
 class Node {
-  constructor(value, priority){
+  constructor(value, priority) {
     this.value = value;
     this.priority = priority;
   }
