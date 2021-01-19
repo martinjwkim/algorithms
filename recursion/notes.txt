@@ -11,3 +11,6 @@ pure recursion
   stand alone function that doesnt depend on external data structures
   when making copies of arrays, use slice, spread operator, or concat to avoid mutation
   
+memoization
+  storing the results of expensive function calls and returning the cached result when the same input occurs
+  

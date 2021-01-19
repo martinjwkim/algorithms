@@ -21,4 +21,3 @@ PROBLEM SOLVING APPROACH
     - can ask interviewer how other people have solved the problem
 
 
-PROBLEM SOLVING PATTERNS
