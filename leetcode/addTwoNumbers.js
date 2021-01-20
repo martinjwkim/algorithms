@@ -14,15 +14,13 @@ var addTwoNumbers = function(l1, l2) {
   }
   
   let sum = sumList(l1) + sumList(l2);
-  let sumArr = sum.toString().split("").reverse();
-  let res;
+  let length = Math.floor(Math.log10(sum)) + 1;
+  let res = new ListNode(sum%10);
+  let curr = res;
   
-  for (let i=0; i<sumArr.length; i++){
-      if (i===0) {
-          res = new ListNode(sumArr[i])
-      } else {
-          res.next = new ListNode(sumArr[i])
-      }
+  for (let i=1; i<length; i++){
+      curr.next = new ListNode(Math.floor(sum / Math.pow(10, i)) % 10);
+      curr = curr.next;
   }
   
   return res;
