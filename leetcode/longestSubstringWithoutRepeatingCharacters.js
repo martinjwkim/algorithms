@@ -2,6 +2,8 @@
 
 var lengthOfLongestSubstring = function (s) {
 
+  if (s.length<2) return s.length;
+
   let hash = {};
   let i = 0;
   let j = 0;
