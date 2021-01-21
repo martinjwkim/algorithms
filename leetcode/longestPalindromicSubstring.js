@@ -22,9 +22,12 @@ var longestPalindrome = function (s) {
 };
 
 function isPalindrome(s){
-  if (s.split("").reverse().join("") === s) return true;
+
+  for (let i=0; i<Math.floor(s.length/2); i++){
+    if (s[i] !== s[s.length-1-i]) return false;
+  }
   
-  return false;
+  return true;
 }
 
 console.log(longestPalindrome("dfaracecarfkmd"))
