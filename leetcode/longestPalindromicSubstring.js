@@ -29,5 +29,3 @@ function isPalindrome(s){
   
   return true;
 }
-
-console.log(longestPalindrome("dfaracecarfkmd"))
