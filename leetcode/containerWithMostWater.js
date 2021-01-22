@@ -12,3 +12,19 @@ var maxArea = function(height) {
 
   return max;
 };
+
+var maxArea = function(height) {
+  let l = 0;
+  let r = height.length-1;
+  let max = 0;
+  let area;
+
+  while (l<r){
+    area = Math.min(height[l],height[r])*Math.abs(l-r)
+    max = Math.max(area, max)
+
+    height[l]<height[r] ? l++ : r--;
+  }
+
+  return max;
+}
