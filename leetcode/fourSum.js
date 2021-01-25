@@ -7,7 +7,7 @@ var fourSum = function (nums, target) {
   let sortedNums = nums.sort((a, b) => a - b);
 
   let l = 0;
-  let r = l+1;
+  let r = 1;
   let res = [];
   let twoSumRes;
 
