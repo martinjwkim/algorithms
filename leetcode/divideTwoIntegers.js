@@ -13,14 +13,26 @@ const divide = (dividend, divisor) => {
     dividend = -dividend;
   }
 
-  if (divisor === 1) return negative ? Math.max(-dividend,-2147483648) : Math.min(dividend,2147483648);
+  if (divisor === 1) return negative ? inRange(-dividend) : inRange(dividend);
 
   function subtract(number, sub){
     if (number-sub < 0) return;
-    if (number-sub >= 0) count = Math.min(++count,2147483648)
+    if (number-sub >= 0) count++
     subtract(number-sub,sub)
   }
 
-  subtract(dividend,divisor);
-  return negative ? -count : count;
+  function inRange(num){
+    if (num>=2147483647) return 2147483647
+    if (num<=-2147483648) return -2147483648
+
+    return num
+  }
+
+  try {
+    subtract(dividend,divisor);
+  } catch (err) {
+    return negative ? inRange(Math.floor(-dividend/divisor)) : inRange(Math.floor(dividend/divisor));
+  }
+  
+  return negative ? inRange(-count) : inRange(count);
 }
