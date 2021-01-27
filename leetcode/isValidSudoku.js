@@ -1,18 +1,50 @@
 const isValidSudoku = (board) => {
-  const checkSquare = (square) => {
+  const checkArr = (arr) => {
     let obj = {};
-    for (let i = 0; i < square.length; i++) {
-      if (obj[square[i]]>=0) {
+    for (let i = 0; i < arr.length; i++) {
+      if (obj[arr[i]]>=0) {
         return false;
       } else {
-        if (square[i] !== '.') obj[square[i]] = i;
+        if (arr[i] !== '.') obj[arr[i]] = i;
       }
     }
     return true;
   }
 
-  for (let square of board) {
-    if(!checkSquare(square)) return false;
+  const checkSquare = (quadrant) => {
+    let row = quadrant[0]*3;
+    let column = quadrant[1]*3;
+    let square = [];
+    board.slice(row,row+3).forEach(r=>{
+      for (let i=column;i<column+3;i++) {
+        square.push(r[i])
+      }
+    })
+    return checkArr(square);
+  }
+
+  const checkColumn = (y) => {
+    let column = [];
+    for (let row of board){
+      column.push(row[y]);
+    };
+    return checkArr(column);
+  }
+  
+  const checkRow = (x) => {
+    let row = board[x];
+    return checkArr(row);
+  }
+
+  for (let i=0; i<3; i++){
+    for (let j=0;j<3;j++){
+      if (!checkSquare([i,j])) return false;
+    }
+  }
+
+  for (let i=0; i<9; i++){
+    if (!checkRow(i)) return false;
+    if (!checkColumn(i)) return false;
   }
   
   return true;
