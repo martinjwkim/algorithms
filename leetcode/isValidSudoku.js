@@ -54,7 +54,7 @@ function isValidSudoku(board) {
   let rows = Array.from({ length: 9 }, () => Object());
   let columns = Array.from({ length: 9 }, () => Object());
   let squares = Array.from({ length: 9 }, () => Object());
-  let num;
+  let num, square;
 
   for (let i = 0; i < 9; i++) {
     for (let j = 0; j < 9; j++) {
