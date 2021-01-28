@@ -16,8 +16,6 @@ const nextPermutation = (nums) => {
     prev = nums[i];
   }
 
-  console.log(pPoint)
-
   if (pPoint === -1) return nums.reverse();
 
   let nextIndex = pPoint + 1;
@@ -29,5 +27,7 @@ const nextPermutation = (nums) => {
 
   [nums[pPoint],nums[nextIndex]] = [nums[nextIndex], nums[pPoint]]
 
-  return nums.slice(0, pPoint + 1).concat(nums.slice(pPoint + 1).reverse())
+  return nums.slice(0, pPoint + 1).concat(nums.slice(pPoint + 1).reverse());
 }
+
+console.log(nextPermutation([1,3,2]))
