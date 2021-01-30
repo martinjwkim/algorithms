@@ -14,7 +14,7 @@ var letterCombinations = function (digits) {
   let charArr = [];
 
   if (!digits) return charArr;
-  
+
   let digitsArr = digits.toString().split("");
 
   for (let element of digitsArr) {

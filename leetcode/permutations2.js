@@ -1,12 +1,11 @@
-// Given an array nums of distinct integers, return all the possible permutations. You can return the answer in any order.
-
-const permute = (nums) => {
+const permuteUnique = (nums) => {
   let res = [];
-  let count = {}
+  let count = {};
 
   for (let i = 0; i < nums.length; i++) {
     count[nums[i]] = count[nums[i]]+1 || 1;
   }
+
 
   function findPermutations(obj, curr) {
 
@@ -26,4 +25,4 @@ const permute = (nums) => {
   return res;
 };
 
-console.log(permute([1,2,3]))
+console.log(permuteUnique([1,1,2]))
