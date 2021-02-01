@@ -8,7 +8,7 @@ const groupAnagrams = (strs) => {
   let res = [];
   let anagrams = {};
   let matchFound;
-  let count;
+  let anagram;
   
   function isSameObject(obj1, obj2) {
     if (Object.keys(obj1).length !== Object.keys(obj2).length) return false;
@@ -19,19 +19,19 @@ const groupAnagrams = (strs) => {
   }
 
   for (let str of strs) {
-    count = {};
+    anagram = {};
     matchFound = false;
     for (let char of str) {
-      count[char] = count[char] + 1 || 1;
+      anagram[char] = anagram[char] + 1 || 1;
     }
-    for (let i in anagrams) {
-      if (isSameObject(anagrams[i], count)) {
+    for (let i in anagrams[str.length]) {
+      if (isSameObject(anagrams[str.length][i], anagram)) {
         res[+i].push(str)
         matchFound = true;
       }
     }
     if (!matchFound) {
-      anagrams[res.length] = count;
+      anagrams[str.length] ?  anagrams[str.length][res.length] = anagram : anagrams[str.length]  = {[res.length]: anagram}
       res.push([str]);
     }
   }
