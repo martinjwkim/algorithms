@@ -26,7 +26,9 @@ const canJump = (nums) => {
 
   if (startIndex>=0){
     for (let i = startIndex; i >= 0; i--) {
-      if (jump(nums, i, [i])) return true;
+      if (nums[i]+i>startIndex){
+        if (jump(nums, i, [i])) return true;
+      }
     }
     return false;
   } else {
