@@ -37,7 +37,6 @@ const groupAnagrams = (strs) => {
   }
 
   return res;
-
 }
 
 console.log(groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"]))
