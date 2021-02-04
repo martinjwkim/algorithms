@@ -1,29 +1,25 @@
 const uniquePaths = (m, n) => {
-  let count = 0;
-  let obj =  {};
-  for (let i=1; i<=m; i++){
-    obj[i]={};
+
+  function traverse(x, y, memo) {
+
+    if (memo[`${x},${y}`]) {
+      return memo[`${x},${y}`];
+    }
+
+    if (x === 1 & y === 1) {
+      return 1;
+    }
+
+    if (x === 0 || y === 0) {
+      return 0;
+    }
+
+    memo[`${x},${y}`] = traverse(x - 1, y, memo) + traverse(x, y - 1, memo);
+    return memo[`${x},${y}`]
+
   }
 
-  function traverse(s, x, y, travelled) {
-    if (x===1 & y===1) {
-      console.log(travelled)
-      count++
-      return;
-    }
-    if (x===0 || x > s[0] || y === 0 || y > s[1]) {
-      return;
-    }
-    if(travelled[x][y]){
-      return;
-    }
-    traverse(s, x-1, y, {...travelled, [x]: {...travelled[x], [y]: true}})
-    traverse(s, x, y-1, {...travelled, [x]: {...travelled[x], [y]: true}})
-  }
-
-  traverse([m, n], m, n, obj)
-
-  return count;
+  return traverse(m, n, {});
 }
 
-console.log(uniquePaths(3,2))
+console.log(uniquePaths(2, 3))
