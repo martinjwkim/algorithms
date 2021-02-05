@@ -1,4 +1,4 @@
-const combine = function (n,k) {
+const combine =  (n,k) => {
   let res = [];
 
   function  findCombos(index, curr) {
