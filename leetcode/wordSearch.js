@@ -1,34 +1,27 @@
 const exist = (board, word) => {
-  let startingLetter = word[0];
-  let startingPoints = [];
-  let found = false;
-
-  for (let i = 0; i < board.length; i++) {
-    for (let j = 0; j < board[i].length; j++) {
-      if (board[i][j] === startingLetter) startingPoints.push([j, i])
-    }
+    
+  function findWord(x,y,i){
+      if (word[i] !== board[y][x]) return false;
+      if (i === word.length-1) return true;
+      
+      board[y][x] = '#'
+      
+      for (let [a, b] of [[x+1,y],[x-1,y],[x,y+1],[x,y-1]]){
+          if (a<board[0].length && a>=0 && b<board.length && b>=0) {
+              if (findWord(a,b,i+1)) return true;
+          }
+      }
+      
+      board[y][x] = word[i];
+      
+      return false;
   }
-
-  function findWord(x, y, i, visited) {
-    if (found) return;
-    if (x === board[0].length || x < 0) return;
-    if (y === board.length || y < 0) return;
-    if (visited[`${x},${y}`]) return;
-    if (board[y][x] !== word[i]) return;
-    if (i === word.length - 1) {
-      found = true;
-      return;
-    }
-
-    findWord(x + 1, y, i + 1, { ...visited, [`${x},${y}`]: true })
-    findWord(x - 1, y, i + 1, { ...visited, [`${x},${y}`]: true })
-    findWord(x, y + 1, i + 1, { ...visited, [`${x},${y}`]: true })
-    findWord(x, y - 1, i + 1, { ...visited, [`${x},${y}`]: true })
+  
+  for (let i=0; i<board.length; i++){
+      for (let j=0; j<board[i].length; j++){
+          if (findWord(j,i,0)) return true;
+      }
   }
-
-  for (let start of startingPoints) {
-    findWord(start[0], start[1], 0, {})
-  }
-
-  return found;
-};
+  
+  return false;
+}
