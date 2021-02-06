@@ -1,34 +1,24 @@
-//MEDIUM
+const addTwoNumbers = (l1, l2) => {
 
-var addTwoNumbers = function(l1, l2) {
-  
-  function sumList(l){
-    let multiplier = 0;
-    let current = l;
-    let sum = 0;
-    while (current){
-      sum += current.val * (10 ** multiplier)
-      current = current.next
-      multiplier++
+  function combineNodes(n1, n2, carryOver) {
+    let val;
+    let node;
+
+    if (n1 && n2) {
+      val = (n1.val + n2.val + carryOver) % 10
+      node = new ListNode(val, combineNodes(n1.next, n2.next, Math.floor((n1.val + n2.val + carryOver) / 10)))
+    } else if (n1) {
+      val = (n1.val + carryOver) % 10
+      node = new ListNode(val, combineNodes(n1.next, null, Math.floor((n1.val + carryOver) / 10)))
+    } else if (n2) {
+      val = (n2.val + carryOver) % 10
+      node = new ListNode(val, combineNodes(null, n2.next, Math.floor((n2.val + carryOver) / 10)))
+    } else if (carryOver) {
+      node = new ListNode(carryOver);
     }
-    
-    return sum;
+
+    return node;
   }
-  
-  let sum = sumList(l1) + sumList(l2);
-  let length = Math.floor(Math.log10(sum)) + 1;
-  let res = new ListNode(sum%10);
-  let curr = res;
-  
-  for (let i=1; i<length; i++){
-      curr.next = new ListNode(Math.floor(sum / Math.pow(10, i)) % 10);
-      curr = curr.next;
-  }
-  
-  return res;
-  
+
+  return combineNodes(l1, l2, 0)
 };
-
-
-// UNFINISHED
-// https://leetcode.com/problems/add-two-numbers/submissions/
