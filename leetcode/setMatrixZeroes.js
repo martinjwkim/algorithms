@@ -1,4 +1,4 @@
-const setZeroes = function (matrix) {
+const setZeroes =  (matrix) => {
   let column = false;
   let row = false;
 
