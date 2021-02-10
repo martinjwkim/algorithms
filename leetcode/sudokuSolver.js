@@ -1,4 +1,4 @@
-var solveSudoku = function (sudoku) {
+const solveSudoku = (sudoku) => {
 
   function getRowColSquare(x, y, board) {
     let row = [];
@@ -18,14 +18,14 @@ var solveSudoku = function (sudoku) {
 
     for (let i = 0; i < 3; i++) {
       for (let j = 0; j < 3; j++) {
-        square.push(board[i+sy][j+sx]);
+        square.push(board[i + sy][j + sx]);
       }
     }
 
     return { row, column, square }
   }
 
-  function findCell(board) {
+  function nextCell(board) {
     for (let i = 0; i < board.length; i++) {
       for (let j = 0; j < board[i].length; j++) {
         if (board[i][j] === '.') {
@@ -39,7 +39,7 @@ var solveSudoku = function (sudoku) {
 
   function getPossibleNums(x, y, board) {
     let nums = new Set();
-    let { row, column, square } = getRowColSquare(x, y, board);
+    let { row, column, square } = getRowColSquare(x, y, board)
 
     for (let i = 1; i < 10; i++) {
       nums.add(`${i}`)
@@ -54,8 +54,9 @@ var solveSudoku = function (sudoku) {
 
   function inputNumber(board) {
 
-    let [x, y] = findCell(board);
-    if (x < 0 && y < 0){
+    let [x, y] = nextCell(board);
+
+    if (x < 0 && y < 0) {
       res = board;
       return;
     }
@@ -64,7 +65,7 @@ var solveSudoku = function (sudoku) {
     if (!nums.size) return;
 
     let boardCopy = [];
-    for (let i=0; i<board.length; i++){
+    for (let i = 0; i < board.length; i++) {
       boardCopy.push([...board[i]])
     }
 
