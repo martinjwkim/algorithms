@@ -1,82 +1,96 @@
-var solveSudoku = function(board){
-  let rows = Array.from({ length: 9 }, () => Object());
-  let columns = Array.from({ length: 9 }, () => Object());
-  let squares = Array.from({ length: 9 }, () => Object());
-  let num, square;
-  let baseInputs = 0;
+var solveSudoku = function (sudoku) {
 
-  function isValidSudoku(board) {
+  function getRowColSquare(x, y, board) {
+    let row = [];
+    let column = [];
+    let square = [];
+    let sx = Math.floor(x / 3) * 3;
+    let sy = Math.floor(y / 3) * 3;
+
     for (let i = 0; i < 9; i++) {
-      for (let j = 0; j < 9; j++) {
-        square = Math.floor(i/3)*3+Math.floor(j/3)
-  
-        if (board[i][j] !== '.') {
-          num = board[i][j];
-  
-          if (rows[i][num]) {
-            return false
-          } else {
-            rows[i][num] = 1;
-            baseInputs++
-          }
-  
-          if (columns[j][num]) {
-            return false
-          } else {
-            columns[j][num] = 1;
-            baseInputs++
-          }
-  
-          if (squares[square][num]) {
-            return false
-          } else {
-            squares[square][num] = 1;
-          }
+      if (board[y][i] !== '.') {
+        column.push(board[y][i]);
+      }
+      if (board[i][x] !== '.') {
+        row.push(board[i][x]);
+      }
+    }
+
+    for (let i = 0; i < 3; i++) {
+      for (let j = 0; j < 3; j++) {
+        square.push(board[i+sy][j+sx]);
+      }
+    }
+
+    return { row, column, square }
+  }
+
+  function findCell(board) {
+    for (let i = 0; i < board.length; i++) {
+      for (let j = 0; j < board[i].length; j++) {
+        if (board[i][j] === '.') {
+          return [j, i]
         }
       }
     }
 
-    return true;
+    return [-1, -1];
   }
 
-  function validNumber(n, i, j) {
-    square = Math.floor(i/3)*3+Math.floor(j/3);
-    if (rows[i][n] || columns[j][n] || squares[square][n]) return false;
-    return true;
-  }
+  function getPossibleNums(x, y, board) {
+    let nums = new Set();
+    let { row, column, square } = getRowColSquare(x, y, board);
 
-  if (isValidSudoku(board)){
-    let inputs = baseInputs;
-
-    while (inputs < 81){
-      for (let i=0; i<9; i++){
-        for (let j=0; j<9; j++){
-          if(board[i][j] === '.'){
-            
-          }
-        }
-      }
+    for (let i = 1; i < 10; i++) {
+      nums.add(`${i}`)
     }
 
+    for (let num of [...row, ...column, ...square]) {
+      nums.delete(num);
+    }
 
-  } else {
-    return 'invalid board';
+    return nums;
   }
 
-  return board;
+  function inputNumber(board) {
 
+    let [x, y] = findCell(board);
+    if (x < 0 && y < 0){
+      res = board;
+      return;
+    }
+
+    let nums = getPossibleNums(x, y, board);
+    if (!nums.size) return;
+
+    let boardCopy = [];
+    for (let i=0; i<board.length; i++){
+      boardCopy.push([...board[i]])
+    }
+
+    for (let num of nums) {
+      boardCopy[y][x] = num;
+      if (!res) inputNumber(boardCopy);
+    }
+  }
+
+  let res;
+
+  inputNumber(sudoku);
+
+  return res;
 }
 
 let board = [
-  ["5","3",".",".","7",".",".",".","."],
-  ["6",".",".","1","9","5",".",".","."],
-  [".","9","8",".",".",".",".","6","."],
-  ["8",".",".",".","6",".",".",".","3"],
-  ["4",".",".","8",".","3",".",".","1"],
-  ["7",".",".",".","2",".",".",".","6"],
-  [".","6",".",".",".",".","2","8","."],
-  [".",".",".","4","1","9",".",".","5"],
-  [".",".",".",".","8",".",".","7","9"]
+  ["5", "3", ".", ".", "7", ".", ".", ".", "."],
+  ["6", ".", ".", "1", "9", "5", ".", ".", "."],
+  [".", "9", "8", ".", ".", ".", ".", "6", "."],
+  ["8", ".", ".", ".", "6", ".", ".", ".", "3"],
+  ["4", ".", ".", "8", ".", "3", ".", ".", "1"],
+  ["7", ".", ".", ".", "2", ".", ".", ".", "6"],
+  [".", "6", ".", ".", ".", ".", "2", "8", "."],
+  [".", ".", ".", "4", "1", "9", ".", ".", "5"],
+  [".", ".", ".", ".", "8", ".", ".", "7", "9"]
 ];
 
 console.log(solveSudoku(board))
