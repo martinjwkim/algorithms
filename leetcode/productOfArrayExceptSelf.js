@@ -1,15 +1,15 @@
 const productExceptSelf = (nums) => {
-  let res = [];
-  let num;
+  let leftSum = [1];
+  let rightSum = [1];
 
-  for (let i = 0; i < nums.length; i++) {
-    num = 1;
-    for (let j = 0; j < nums.length; j++) {
-      if (i !== j){
-        num*=nums[j]
-      }
-    }
-    res.push(num);
+  for (let i=1; i<nums.length; i++){
+    leftSum.push(leftSum[i-1]*nums[i-1])
+    rightSum.push(rightSum[i-1]*nums[nums.length-i])
   }
-  return res;
+
+  for (let i=0; i<nums.length; i++){
+    leftSum[i] *= rightSum[nums.length-1-i]
+  }
+    
+  return leftSum;
 }
