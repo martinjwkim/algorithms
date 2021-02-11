@@ -5,8 +5,8 @@ const maxProduct = (nums) => {
 
   for (let i=1; i<nums.length; i++){
     if (nums[i-1] !== 0) {
-      currMax = Math.max(nums[i]*arr[i-1].max, nums[i]*arr[i-1].min)
-      currMin = Math.min(nums[i]*arr[i-1].max, nums[i]*arr[i-1].min)
+      currMax = Math.max(nums[i]*arr[i-1].max, nums[i]*arr[i-1].min, nums[i])
+      currMin = Math.min(nums[i]*arr[i-1].max, nums[i]*arr[i-1].min, nums[i])
       arr.push({max: currMax, min: currMin})
     } else {
       arr.push({max: nums[i], min: nums[i]})
