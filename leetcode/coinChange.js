@@ -1,21 +1,20 @@
 const coinChange = (coins, amount) => {
-  let res = amount+1;
+  let coinsSorted = coins.sort((a,b) => b-a);
 
-  function change(left, count) {
-    if (left === 0) {
-      res = Math.min(res, count)
-      return;
+  function change(coinsArr, rem, memo) {
+    if (memo[rem]) return memo[rem];
+    if (rem === 0) return 0;
+    if (rem < 0) return -1;
+
+    for (let coin of coinsArr){
+      if (!memo[rem]){
+        let res = 1 + change(coinsArr, rem-coin, memo);
+        if (res) memo[rem] = res;
+      }
     }
-    if (left < 0) {
-      return;
-    }
-    for (let coin of coins) {
-      change(left-coin, count+1)
-    }
+
+    if (!memo[rem]) memo[rem] = -1;
   }
 
-  change(amount, 0)
-
-  if (res > amount) return -1;
-  return res;
+  return change(coinsSorted, amount, {})
 }
