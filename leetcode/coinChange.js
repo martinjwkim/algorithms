@@ -4,7 +4,7 @@ const coinChange = (coins, amount) => {
   function change(coinsArr, rem, memo) {
     if (memo[rem]) return memo[rem];
     if (rem === 0) return 0;
-    if (rem < 0) return -1;
+    if (rem < 0) return;
 
     for (let coin of coinsArr){
       if (!memo[rem]){
@@ -14,6 +14,8 @@ const coinChange = (coins, amount) => {
     }
 
     if (!memo[rem]) memo[rem] = -1;
+
+    return memo[rem];
   }
 
   return change(coinsSorted, amount, {})
