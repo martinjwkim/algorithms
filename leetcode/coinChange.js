@@ -1,16 +1,21 @@
 const coinChange = (coins, amount) => {
-  function change(left, memo) {
+  let res = amount+1;
 
-    let min = Infinity;
-
-    for (let coin of coins) {
-      min = Math.min(min, change(left-coin, memo));
+  function change(left, count) {
+    if (left === 0) {
+      res = Math.min(res, count)
+      return;
     }
-
-    memo[left] = min;
-    
-    return memo[left];
+    if (left < 0) {
+      return;
+    }
+    for (let coin of coins) {
+      change(left-coin, count+1)
+    }
   }
 
-  return change(amount, {})
+  change(amount, 0)
+
+  if (res > amount) return -1;
+  return res;
 }
