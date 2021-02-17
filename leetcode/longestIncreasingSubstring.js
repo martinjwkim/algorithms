@@ -1,27 +1,18 @@
 const lengthOfLIS = (nums) => {
-  let maxLen = 1;
-    
-    function LIS(numsArr, i, curr, memo){
-        let len = 1;
-        if (memo[i]) return memo[i];
+  let arr = [];
+
+    for (let i=0; i<nums.length; i++){
+        let inserted = false;
         
-        for (let j=i+1; j<numsArr.length; j++){
-            let res = LIS(numsArr, j, numsArr[j], memo)  
-            if (curr < numsArr[j]){
-                len = Math.max(len, res+1);
+        for (let j=0; j<arr.length; j++){
+            
+            if (nums[i]<=arr[j] && !inserted) {
+                arr[j] = nums[i]
+                inserted = true;
             }
         }
-        
-        memo[i] = len;
-        maxLen = Math.max(maxLen, len)
-        
-        return len;
+        if (!inserted) arr.push(nums[i])
     }
     
-    LIS(nums, 0, nums[0], {})
-    
-    
-    return maxLen;
+    return arr.length
 }
-
-console.log(lengthOfLIS([10,9,2,5,3,7,101,18]))
