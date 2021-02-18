@@ -1,5 +1,6 @@
 const wordBreak = (s, wordDict) => {
   if (s.length === 0) return true;
+
   
   for (let word of wordDict){
       let len = word.length;
