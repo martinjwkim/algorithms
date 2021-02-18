@@ -1,10 +1,8 @@
 const rob = (nums) => {
-  function findMax(nums, i) {
-
-    if (i >= nums.length) return 0;
-
-    return nums[i] + Math.max(findMax(nums, i + 2), findMax(nums, i + 3))
+  
+  for (let i=nums.length-1; i>=0; i--){
+    nums[i] += Math.max(nums[i+2] || 0, nums[i+3] || 0)
   }
 
-  return Math.max(findMax(nums, 0), findMax(nums, 1))
+  return Math.max(nums[0] || 0,nums[1] || 0)
 }
