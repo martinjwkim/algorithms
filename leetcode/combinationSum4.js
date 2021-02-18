@@ -1,19 +1,14 @@
-const combinationSum4 = (nums, target) => {
+const combinationSum4 = (nums, target, memo = {}) => {
 
-  function findCombos(numsArr, left, memo) {
-    if (memo[left]) return memo[left];
-    if (left === 0) {
-      return 1;
-    }
-    if (left < 0) return 0;
-    let num = 0;
-    for (let i = 0; i < numsArr.length; i++) {
-      num += findCombos(numsArr, left - numsArr[i], memo)
-    }
-    memo[left] = num;
+  if (memo[target] >= 0) return memo[target];
+  if (target === 0) return 1;
+  if (target < 0) return 0;
 
-    return memo[left]
+  let num = 0;
+  for (let i = 0; i < nums.length; i++) {
+    num += combinationSum4(nums, target - nums[i], memo)
   }
+  memo[target] = num;
 
-  return findCombos(nums, target, {})
+  return memo[target];
 }
