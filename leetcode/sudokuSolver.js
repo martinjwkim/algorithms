@@ -57,12 +57,11 @@ const solveSudoku = (sudoku) => {
     let [x, y] = nextCell(board);
 
     if (x < 0 && y < 0) {
-      res = board;
-      return;
+      return true;
     }
 
     let nums = getPossibleNums(x, y, board);
-    if (!nums.size) return;
+    if (!nums.size) return false;
 
     let boardCopy = [];
     for (let i = 0; i < board.length; i++) {
@@ -71,15 +70,28 @@ const solveSudoku = (sudoku) => {
 
     for (let num of nums) {
       boardCopy[y][x] = num;
-      if (!res) inputNumber(boardCopy);
+      let res = inputNumber(boardCopy);
+      if (res) {
+        numbers.push(num);
+        return true;
+      }
     }
+
+    return false;
   }
 
-  let res;
+  let numbers = [];
+  if (inputNumber(sudoku)) {
+    for (let i = 0; i < sudoku.length; i++) {
+      for (let j = 0; j < sudoku[i].length; j++) {
+        if (sudoku[i][j] === '.') {
+          sudoku[i][j] = numbers.pop()
+        }
+      }
+    }
+  };
 
-  inputNumber(sudoku);
-
-  return res;
+  return sudoku;
 }
 
 let board = [
