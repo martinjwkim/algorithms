@@ -85,7 +85,7 @@ const solveSudoku = (sudoku) => {
     for (let i = 0; i < sudoku.length; i++) {
       for (let j = 0; j < sudoku[i].length; j++) {
         if (sudoku[i][j] === '.') {
-          sudoku[i][j] = numbers.pop()
+          sudoku[i][j] = numbers.pop();
         }
       }
     }
