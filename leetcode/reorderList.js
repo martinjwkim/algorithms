@@ -10,11 +10,19 @@ const reorderList = (head) => {
   }
 
   let start = new ListNode(0);
-  let node;
+  let i=0;
+  let len=0;
   curr = start;
 
-  while (arr.length){
-    curr.next = left ? arr.shift() : arr.pop()
+  while (len<arr.length){
+    if (left){
+      curr.next = arr[0+i];
+    } else {
+      curr.next = arr[arr.length-1-i]
+      i++
+    }
+
+    len++;
     left = !left;
     curr = curr.next;
   }
