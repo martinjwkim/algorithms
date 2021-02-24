@@ -1,5 +1,5 @@
 const mergeTwoLists = (l1, l2, curr = new ListNode(0)) => {
-  if (!l1 && !l2) return l1;
+  if (!l1 && !l2) return null;
 
   if (!l1 || !l2) {
     curr.next = l2 || l1;
