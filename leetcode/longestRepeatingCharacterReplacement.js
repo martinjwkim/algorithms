@@ -13,8 +13,6 @@ const characterReplacement = (s, k) => {
     max = Math.max(...counts);
     len = end - start + 1;
 
-    console.log(start, end, len, max)
-
     if (len - max <= k){
       res = Math.max(res, len);
       end++;
