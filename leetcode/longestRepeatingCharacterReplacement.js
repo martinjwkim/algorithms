@@ -1,23 +1,29 @@
 const characterReplacement = (s, k) => {
-  const findLongest = (idx, char, rem, count) => {
-    if (idx === s.length) return count+rem<s.length ? count+rem : s.length;
-    if (s[idx] !== char) rem--;
-    if (rem < 0) return count;
+  if (s.length < 2) return s.length;
 
-    return findLongest(idx+1, char, rem, count+1)
-  }
+  let start = 0,
+    end = 0,
+    res = 1,
+    max, len;
 
-  let curr;
-  let max = 0;
+  let counts = new Array(26).fill(0);
+  counts[s[0].charCodeAt(0)-65]+=1
 
-  for (let i=0; i<s.length; i++){
-    if (s[i] !== curr) {
-      max = Math.max(findLongest(i+1, s[i], k, 1), max);
-      curr = s[i]; 
+  while (end < s.length) {
+    max = Math.max(...counts);
+    len = end - start + 1;
+
+    console.log(start, end, len, max)
+
+    if (len - max <= k){
+      res = Math.max(res, len);
+      end++;
+      if (end<s.length) counts[s[end].charCodeAt(0)-65]+=1;
+    } else {
+      counts[s[start].charCodeAt(0)-65]-=1
+      start++;
     }
   }
 
-  return max;
+  return res;
 }
-
-console.log(characterReplacement('ABAB', 2))
