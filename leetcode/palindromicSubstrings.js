@@ -28,3 +28,30 @@ const countSubstrings = (s) => {
 
   return res;
 }
+
+const countSubstrings = (s) => {
+
+  const countFromCenter = (str, left, right) => {
+    let count = 0;
+
+    while (str[left] === str[right] && left>=0 && right<str.length){
+      count++;
+      left--;
+      right++;
+    }
+
+    return count;
+  }
+  
+  let res = 0;
+
+  for (let i=0; i<s.length; i++){
+    res += countFromCenter(s, i, i);
+  }
+
+  for (let i=.5; i<s.length-1; i++){
+    res += countFromCenter(s, i-0.5, i+0.5);
+  }
+
+  return res;
+}
