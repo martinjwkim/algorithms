@@ -1,15 +1,17 @@
-var levelOrder = function(root) {
-  if (!root) return []
-  const arr = [root], result = []
-  while (arr.length) {
-      const size = arr.length, values = []
-      for (let i = 0; i < size; i++) {
-          const node = arr.shift()
-          values.push(node.val)
-          if (node.left) arr.push(node.left) 
-          if (node.right) arr.push(node.right) 
-      }
-      result.push(values)
+const levelOrder = (root) => {
+
+  const traverse = (curr, level, arr) => {
+    if (!curr) return arr;
+    if (arr[level]){
+      arr[level].push(curr.val);
+    } else {
+      arr[level] = [curr.val];
+    }
+    traverse(curr.left, level+1, arr);
+    traverse(curr.right, level+1, arr);
+
+    return arr;
   }
-  return result
+
+  return traverse(root, 0, [])
 };
