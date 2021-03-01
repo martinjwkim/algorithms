@@ -1,20 +1,20 @@
 const lowestCommonAncestor = (root, p, q) => {
-  
-  const traverse = (curr, node, lowest) => {
+  const traverse = (curr, target, travelled) => {
+    travelled[curr.val] = true;
+    if (curr === target) return travelled;
 
-    if (ancestors[curr.val]) lowest = curr.val;
-
-    ancestors[curr.val] = true;
-
-    if (curr === node) return lowest;
-
-    return node.val < curr.val ? traverse(curr.left, node, lowest) : traverse(curr.right, node, lowest);
+    return curr.val<target.val ? traverse(curr.right, target, travelled) : traverse(curr.left, target, travelled)
   }
 
-  let ancestors = {};
+  const findLowest = (curr, target, travelled, lowest) => {
+    if (travelled[curr.val] !== undefined) lowest = curr
+    if (curr === target) return lowest
 
-  let res = traverse(root, p, root.val);
-  res = traverse(root, q, root.val);
+    return curr.val<target.val ? findLowest(curr.right, target, travelled, lowest) : findLowest(curr.left, target, travelled, lowest)
+  }
+
+  let travelled = traverse(root, p, {});
+  let res = findLowest(root, q, travelled);
 
   return res;
 }
