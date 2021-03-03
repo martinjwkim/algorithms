@@ -47,6 +47,12 @@ class Trie {
   }
 
   startsWith(value, curr=this.root) {
-    
+    if (!curr) return false;
+    if (curr.val.slice(0,value.length) === value) return true;
+    if (value < curr.val) {
+      this.startsWith(value, curr.left)
+    } else {
+      this.startsWith(value, curr.right)
+    }
   }
 }
