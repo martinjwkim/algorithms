@@ -39,20 +39,14 @@ class Trie {
   search(value, curr=this.root) {
     if (!curr) return false;
     if (curr.val === value) return true;
-    if (value < curr.val) {
-      return this.search(value, curr.left)
-    } else {
-      return this.search(value, curr.right)
-    }
+  
+    return value < curr.val ? this.search(value, curr.left) : this.search(value, curr.right)
   }
 
   startsWith(value, curr=this.root) {
     if (!curr) return false;
     if (curr.val.slice(0,value.length) === value) return true;
-    if (value < curr.val) {
-      return this.startsWith(value, curr.left)
-    } else {
-      return this.startsWith(value, curr.right)
-    }
+
+    return value < curr.val ? this.startsWith(value, curr.left) : this.startsWith(value, curr.right)
   }
 }
