@@ -1,6 +1,6 @@
 class Node {
   constructor(value) {
-    this.value = value;
+    this.val = value;
     this.left = null;
     this.right = null;
   }
@@ -40,9 +40,9 @@ class Trie {
     if (!curr) return false;
     if (curr.val === value) return true;
     if (value < curr.val) {
-      this.search(value, curr.left)
+      return this.search(value, curr.left)
     } else {
-      this.search(value, curr.right)
+      return this.search(value, curr.right)
     }
   }
 
@@ -50,9 +50,9 @@ class Trie {
     if (!curr) return false;
     if (curr.val.slice(0,value.length) === value) return true;
     if (value < curr.val) {
-      this.startsWith(value, curr.left)
+      return this.startsWith(value, curr.left)
     } else {
-      this.startsWith(value, curr.right)
+      return this.startsWith(value, curr.right)
     }
   }
 }
