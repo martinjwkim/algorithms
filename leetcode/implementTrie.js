@@ -11,13 +11,12 @@ class Trie {
     this.root = null;
   }
 
-  insert(value, curr) {
+  insert(value, curr=this.root) {
 
     if (!this.root) {
       this.root = new Node(value);
       return this;
     } else {
-      if (!curr) curr = this.root;
       if (value < curr.val) {
         if (curr.left) {
           this.insert(value, curr.left)
@@ -37,7 +36,17 @@ class Trie {
     }
   }
 
-  search(value) {
+  search(value, curr=this.root) {
+    if (!curr) return false;
+    if (curr.val === value) return true;
+    if (value < curr.val) {
+      this.search(value, curr.left)
+    } else {
+      this.search(value, curr.right)
+    }
+  }
 
+  startsWith(value, curr=this.root) {
+    
   }
 }
