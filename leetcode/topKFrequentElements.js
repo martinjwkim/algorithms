@@ -43,7 +43,7 @@ class Heap {
     let index = this.values.length-1;
     let parentIndex = Math.floor((index-1)/2);
 
-    while(parentIndex > 0 && this.values[parentIndex].frequency < this.values[index].frequency){
+    while(index > 0 && this.values[parentIndex].frequency < this.values[index].frequency){
       [this.values[parentIndex],this.values[index]] = [this.values[index],this.values[parentIndex]];
       index = parentIndex;
       parentIndex = Math.floor((index-1)/2);
@@ -78,6 +78,7 @@ class Heap {
       
       [this.values[index], this.values[swap]] = [this.values[swap], this.values[index]];
       index = swap;
+      swap = null;
     }
   }
 }
