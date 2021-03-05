@@ -75,9 +75,9 @@ class MinHeap {
       swap = null;
       leftIndex = index * 2 + 1;
       rightIndex = leftIndex + 1;
-      element = this.values[index].val;
-      leftChild = this.values[leftIndex].val;
-      rightChild = this.values[rightIndex]?.val;
+      element = this.values[index];
+      leftChild = this.values[leftIndex];
+      rightChild = this.values[rightIndex];
 
       if (leftChild < element) swap = leftIndex;
       if (rightChild !== undefined && rightChild < element && rightChild < leftChild) swap = rightIndex;
@@ -129,9 +129,9 @@ class MaxHeap {
       swap = null;
       leftIndex = index * 2 + 1;
       rightIndex = leftIndex + 1;
-      element = this.values[index].val;
-      leftChild = this.values[leftIndex].val;
-      rightChild = this.values[rightIndex]?.val;
+      element = this.values[index];
+      leftChild = this.values[leftIndex];
+      rightChild = this.values[rightIndex];
 
       if (leftChild > element) swap = leftIndex;
       if (rightChild !== undefined && rightChild > element && rightChild > leftChild) swap = rightIndex;
