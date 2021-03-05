@@ -7,7 +7,7 @@ class MedianFinder {
   addNum(num) {
     let median = this.findMedian();
 
-    num < median ? this.minHeap.insert(num) : this.maxHeap.insert(num);
+    num < median ? this.maxHeap.insert(num) : this.minHeap.insert(num);
 
     this.balance();
   }
@@ -29,7 +29,7 @@ class MedianFinder {
 
     if (minLength < maxLength){
       this.minHeap.insert(this.maxHeap.removeMax());
-    } else if (maxLength > minLength) {
+    } else if (maxLength < minLength) {
       this.maxHeap.insert(this.minHeap.removeMin());
     }
   }
