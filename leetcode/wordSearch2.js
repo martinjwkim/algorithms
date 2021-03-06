@@ -4,6 +4,7 @@ const findWords = (board, words) => {
 
   const findWord = (x, y, curr) => {
 
+    if (!wordSet.size) return;
     if (x < 0 || y < 0 || x >= board[0].length || y >= board.length) return;
     if (board[y][x] === '#') return;
 
@@ -26,14 +27,32 @@ const findWords = (board, words) => {
     return;
   }
 
-  let wordSet = new Set();
-  let resSet = new Set();
-  let res = [];
+  const filterImpossibleWords = (words) => {
+    let chars = new Set();
+    let possibleWords = new Set();
+    let valid;
 
-  for (let word of words) {
-    wordSet.add(word);
+    for (let y = 0; y < board.length; y++) {
+      for (let x = 0; x < board[0].length; x++) {
+        chars.add(board[y][x]);
+      }
+    }
+
+    for (let word of words) {
+      valid = true;
+      for (let char of word) {
+        if (!chars.has(char)) valid = false;
+      }
+      if (valid) possibleWords.add(word);
+    }
+
+    return possibleWords;
   }
 
+  let wordSet = filterImpossibleWords(words);
+  let resSet = new Set();
+  let res = [];
+  
   for (let y = 0; y < board.length; y++) {
     for (let x = 0; x < board[0].length; x++) {
       findWord(x, y, '')
