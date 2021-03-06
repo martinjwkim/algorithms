@@ -57,7 +57,7 @@ class Graph {
 
     while(stack.length){
       current = stack.pop();
-      result.push(current);g
+      result.push(current);
       this.adjacencyList[current].forEach(neighbor => {
         if(!visited[neighbor]){
           visited[neighbor]=true;
