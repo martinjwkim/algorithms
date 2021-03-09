@@ -1,27 +1,29 @@
-const longestConsecutive = (nums) => {
-  let neg = Math.min(...nums) < 0 ? true : false;
-  let obj = {};
-  let res = nums.length ? 1 : 0;
-  let curr, prev;
+const longestConsecutive2 = (nums) => {
+  let currNum, currMax;
+  let max = 0;
+
+  let numSet = new Set();
 
   for (let num of nums) {
-    if (neg) {
-      obj[num-Math.min(...nums)] = true
-    } else {
-      obj[num] = true;
+    numSet.add(num);
+  }
+
+  for (let num of nums) {
+    if (!numSet.has(num - 1)) {
+      currNum = num;
+      currMax = 1;
+
+      while (numSet.has(currNum + 1)) {
+        currMax++;
+        currNum = currNum + 1;
+      }
+
+      max = Math.max(max, currMax);
     }
   }
 
-  for (let num in obj) {
-    if (+num === +prev+1){
-      curr++;
-      res = Math.max(res, curr)
-    } else {
-      curr = 1;
-    }
+  return max;
 
-    prev = num;
-  }
-
-  return res;
 }
+
+console.log(longestConsecutive([100, 4, 200, 1, 3, 2]))
