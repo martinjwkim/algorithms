@@ -11,23 +11,20 @@ const minWindow = (s,t) => {
     tSet.add(char);
   }
 
-  while (start < s.length){
+  while (start < s.length-1){
     if (!tSet.has(s[start])){
       start++;
-    }
-    if (!tSet.has(s[end])){
+    } else if (!tSet.has(s[end])){
       end++;
       if (tSet.has(s[end])){
         tCount[s[end].charCodeAt(0)-65]-=1
       }
-    }
-    if (Math.max(...tCount) === 0) {
+    } else if (Math.max(...tCount) === 0) {
       let str = s.slice(start,end+1);
       if (str.length < res.length) res = str;
       tCount[s[start].charCodeAt(0)-65]+=1;
       start++;
-    }
-    if (Math.max(...tCount)>0){
+    } else if (Math.max(...tCount)>0){
       end++;
       if (tSet.has(s[end])){
         tCount[s[end].charCodeAt(0)-65]-=1
