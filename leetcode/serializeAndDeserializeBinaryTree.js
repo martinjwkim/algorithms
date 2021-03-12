@@ -14,8 +14,8 @@ const deserialize = (data, n=0, vals=JSON.parse(data)) => {
   if (!vals[n] && vals[n]!==0) return null;
 
   let node = new TreeNode(vals[n]);
-  node.left = deserialize(data, 2*n+1);
-  node.right = deserialize(data, 2*n+2);
+  node.left = deserialize(data, 2*n+1, vals);
+  node.right = deserialize(data, 2*n+2, vals);
 
   return node;
 }

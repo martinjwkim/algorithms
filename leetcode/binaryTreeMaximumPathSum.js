@@ -4,13 +4,13 @@ const maxPathSum = (root) => {
 
   const search = (node) => {
     if (!node) return -Infinity;
-    
+
     let leftSum = search(node.left);
     let rightSum = search(node.right);
 
-    let sum = Math.max(leftSum+node.val, rightSum+node.val, node.val)
+    let sum = Math.max(leftSum + node.val, rightSum + node.val, node.val)
 
-    max = Math.max(max, leftSum+rightSum+node.val, sum)
+    max = Math.max(max, leftSum + rightSum + node.val, sum)
 
     return sum;
   }
