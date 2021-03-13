@@ -8,15 +8,23 @@ const maximalRectangle = (matrix) => {
   }
 
   const findLargestSquare = (x, y, len) => {
-    
+    if (x+len > matrix[0].length || y+len > matrix.length) return len;
+
+    for (let dy=0; dy<len; dy++){
+      for (let dx=0; dx<len; dx++){
+        if (matrix[y+dy][x+dx] === 0) return len;
+      }
+    }
+
+    return findLargestSquare = (x, y, len+1)
   }
 
   const maxHeight = (x, y, width, height) => {
-    if (y+height > matrix.length) return height;
+    if (y+height > matrix.length) return height-1;
 
     for (let dx=0; dx<width; dx++){
       if (matrix[y+height][x+dx] === 0){
-        return height;
+        return height-1;
       }
     }
 
@@ -24,11 +32,11 @@ const maximalRectangle = (matrix) => {
   }
 
   const maxWidth = (x, y, width, height) => {
-    if (x+width > matrix[0].length) return width;
+    if (x+width > matrix[0].length) return width-1;
 
     for (let dy=0; dy<height; dy++){
       if (matrix[y+dy][x+width] === 0){
-        return width;
+        return width-1;
       }
     }
 
