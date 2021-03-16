@@ -2,29 +2,29 @@ const maximalRectangle = (matrix) => {
   
   
   const findLargestRectangle = (x, y) => {
-    let len = findLargestSquare(x, y, 1);
+    let len = findLargestSquare(x, y, 0);
 
     return Math.max(len*maxHeight(x, y, len, len), len*maxWidth(x, y, len, len))
   }
 
   const findLargestSquare = (x, y, len) => {
-    if (x+len > matrix[0].length || y+len > matrix.length) return len;
+    if (x+len >= matrix[0].length || y+len >= matrix.length) return len;
 
-    for (let dy=0; dy<len; dy++){
-      for (let dx=0; dx<len; dx++){
-        if (matrix[y+dy][x+dx] === 0) return len;
+    for (let dy=0; dy<len+1; dy++){
+      for (let dx=0; dx<len+1; dx++){
+        if (matrix[y+dy][x+dx] === '0') return len;
       }
     }
 
-    return findLargestSquare = (x, y, len+1)
+    return findLargestSquare(x, y, len+1);
   }
 
   const maxHeight = (x, y, width, height) => {
-    if (y+height > matrix.length) return height-1;
+    if (y+height >= matrix.length) return height;
 
     for (let dx=0; dx<width; dx++){
-      if (matrix[y+height][x+dx] === 0){
-        return height-1;
+      if (matrix[y+height][x+dx] === '0'){
+        return height;
       }
     }
 
@@ -32,15 +32,15 @@ const maximalRectangle = (matrix) => {
   }
 
   const maxWidth = (x, y, width, height) => {
-    if (x+width > matrix[0].length) return width-1;
+    if (x+width >= matrix[0].length) return width;
 
     for (let dy=0; dy<height; dy++){
-      if (matrix[y+dy][x+width] === 0){
-        return width-1;
+      if (matrix[y+dy][x+width] === '0'){
+        return width;
       }
     }
 
-    return maxHeight(x, y, width+1, height);
+    return maxWidth(x, y, width+1, height);
   }
 
   let maxArea = 0;
@@ -54,3 +54,5 @@ const maximalRectangle = (matrix) => {
   return maxArea;
 
 }
+
+console.log(maximalRectangle([["1","0","1","0","0"],["1","0","1","1","1"],["1","1","1","1","1"],["1","0","0","1","0"]]))
